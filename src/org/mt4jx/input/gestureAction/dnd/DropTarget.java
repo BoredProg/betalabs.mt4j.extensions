@@ -7,14 +7,17 @@ import org.mt4j.input.inputProcessors.componentProcessors.dragProcessor.DragEven
  * @author Uwe Laufs
  * @see DragAndDropAction
  */
-public interface DropTarget extends DragAndDropFilter {
-	
+public interface DropTarget extends DragAndDropFilter
+{
+
 	// R.Scarberry 2/28/2011: added DragAndDropFilter as superinterface. 
-	
-	/**
-	 * Is called by DropAction or DragAndDropAction, when a component is dropped on top of the MTDropTarget. 
-	 * @param droppedComponent The MTComponent that is dropped on top of the MTDropTarget.
-	 */
-	public void componentDropped(MTComponent droppedComponent, DragEvent de);
+    /**
+     * Is called by DropAction or DragAndDropAction, when a component is dropped
+     * on top of the MTDropTarget.
+     *
+     * @param droppedComponent The MTComponent that is dropped on top of the
+     *                         MTDropTarget.
+     */
+    public void componentDropped(MTComponent droppedComponent, DragEvent de);
 
 }

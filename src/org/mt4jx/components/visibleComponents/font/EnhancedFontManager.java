@@ -84,11 +84,11 @@ public class EnhancedFontManager
      */
     private final HashMap<String, IEnhancedFontFactory> suffixToFactory;
 
-  // Paths to directories containing fonts, separated by File.pathSeparator
+    // Paths to directories containing fonts, separated by File.pathSeparator
     // similarly to a java classpath.
     private String fontPath = MT4jSettings.DEFAULT_FONT_PATH;
 
-  // Maps font names to the files that contains them.
+    // Maps font names to the files that contains them.
     // If the file path is null, it's a system font.
     private Map<String, String> availableFonts;
 
@@ -127,7 +127,7 @@ public class EnhancedFontManager
         final EnhancedBitmapFontFactory bitmapFontFactory = new EnhancedBitmapFontFactory();
 
     // Register default font factories
-    // I've noticed on my windows 7 system that loading ttf fonts
+        // I've noticed on my windows 7 system that loading ttf fonts
         // with the bitmap font factory yields more pleasing results.
         // TODO: investigate to see if the ttf font factory ignores the antialiasing hint.
         registerFontFactory(".ttf", new EnhancedTTFontFactory() /*
@@ -234,7 +234,7 @@ public class EnhancedFontManager
         }
     }
 
-  // Load the information on available fonts.
+    // Load the information on available fonts.
     //
     private void loadAvailableFonts()
     {
@@ -284,7 +284,7 @@ public class EnhancedFontManager
                     if (factory != null)
                     {
                         final String filePath = file.getAbsolutePath();
-            // It's important that this method return quickly and not consume
+                        // It's important that this method return quickly and not consume
                         // many resources.
                         final String fontName = factory.extractFontName(filePath);
                         // Store font name mapped to its file path.
@@ -299,7 +299,7 @@ public class EnhancedFontManager
             }
         }
 
-    // Several system fonts may not map to any of the files found,
+        // Several system fonts may not map to any of the files found,
         // yet they are still available. Add to the available fonts, but
         // map them to null.
         final String[] allFontNames = PFont.list();
@@ -322,7 +322,7 @@ public class EnhancedFontManager
         // System.out.println("\t\t... " + fn + " ==> " + filename);
         // }
     /*
-         * 
+         *
          */
         this.availableFonts = availableFonts;
         this.availableFontsReverse = availableFontsReverse;
@@ -591,7 +591,7 @@ public class EnhancedFontManager
                     try
                     {
                         OutputStream out = new FileOutputStream(tempFile);
-                    
+
                         final byte[] buffer = new byte[4096];
 
                         int bytesRead = 0;
@@ -616,7 +616,7 @@ public class EnhancedFontManager
         return createFontFromFile(pa, fontAbsolutePath, fontSize, color, antiAliased);
     }
 
-  // Private method for creating the font usually using the full font path.
+    // Private method for creating the font usually using the full font path.
     // If fontAbsolutePath is the name of a system font, the EnhancedBitmapFontFactory will
     // load it as a PFont.
     //
@@ -687,7 +687,7 @@ public class EnhancedFontManager
         return (loadedFont);
     }
 
-  // Returns the file name extension.
+    // Returns the file name extension.
     //
     private String getFontSuffix(final String fontFileName)
     {
@@ -782,7 +782,7 @@ public class EnhancedFontManager
         {
             for (final IFont font : fontList)
             {
-        // Don't need to get the font name from the font object, since all fonts in
+                // Don't need to get the font name from the font object, since all fonts in
                 // the list have the specified fontName.
                 if ((font.getOriginalFontSize() == fontSize)
                         && font.getFillColor().equals(fillColor)

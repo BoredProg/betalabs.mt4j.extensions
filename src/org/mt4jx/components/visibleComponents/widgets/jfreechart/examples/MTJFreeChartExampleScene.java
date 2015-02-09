@@ -15,70 +15,80 @@ import org.mt4j.util.MTColor;
 import org.mt4j.util.math.Vector3D;
 import org.mt4jx.components.visibleComponents.widgets.jfreechart.MTJFreeChart;
 
-/***********************************************************************
+/**
+ * *********************************************************************
  * MT4jCharts, created April 2010
  * by Uwe Laufs
- *  
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- ***********************************************************************/
-public class MTJFreeChartExampleScene extends AbstractScene {
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ **********************************************************************
+ */
+public class MTJFreeChartExampleScene extends AbstractScene
+{
 
-	public MTJFreeChartExampleScene(MTApplication mtApplication, String name) {
-		super(mtApplication, name);
-		this.setClearColor(new MTColor(0, 0, 96, 255));
-		//Show touches
-		this.registerGlobalInputProcessor(new CursorTracer(mtApplication, this));
+    public MTJFreeChartExampleScene(MTApplication mtApplication, String name)
+    {
+        super(mtApplication, name);
+        this.setClearColor(new MTColor(0, 0, 96, 255));
+        //Show touches
+        this.registerGlobalInputProcessor(new CursorTracer(mtApplication, this));
 
-		// Create Example Data
-		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-	        for (int i = 0; i < 10; i++) {
-	            dataset.addValue(10*Math.random(), "MySeries", "T"+i);
-			}
-	    // Create a JFreeChart
-        JFreeChart chart1 = ChartFactory.createLineChart("Line Chart","x axis","y axis",dataset,PlotOrientation.VERTICAL,true,true,false);
+        // Create Example Data
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < 10; i++)
+        {
+            dataset.addValue(10 * Math.random(), "MySeries", "T" + i);
+        }
+        // Create a JFreeChart
+        JFreeChart chart1 = ChartFactory.createLineChart("Line Chart", "x axis", "y axis", dataset, PlotOrientation.VERTICAL, true, true, false);
         // Put the JFreeChart into a MTJFreeChart wrapper
-		MTJFreeChart mtChart1 = new MTJFreeChart(800, 600, mtApplication, chart1);
-		
-		// Create another chart
-        DefaultPieDataset pds = new DefaultPieDataset();
-        
-        	pds.setValue("Java", new Double(17.773));
-	        pds.setValue("C", new Double(15.822));
-	        pds.setValue("C++", new Double(8.783));
-	        pds.setValue("PHP", new Double(7.835));
-	        pds.setValue("Python", new Double(6.265));
-	        pds.setValue("C#", new Double(6.226));
-	        pds.setValue("(Visual) Basic", new Double(5.867));
-	        pds.setValue("Objective-C", new Double(3.011));
-	        pds.setValue("Perl", new Double(2.857));
+        MTJFreeChart mtChart1 = new MTJFreeChart(800, 600, mtApplication, chart1);
 
+        // Create another chart
+        DefaultPieDataset pds = new DefaultPieDataset();
+
+        pds.setValue("Java", new Double(17.773));
+        pds.setValue("C", new Double(15.822));
+        pds.setValue("C++", new Double(8.783));
+        pds.setValue("PHP", new Double(7.835));
+        pds.setValue("Python", new Double(6.265));
+        pds.setValue("C#", new Double(6.226));
+        pds.setValue("(Visual) Basic", new Double(5.867));
+        pds.setValue("Objective-C", new Double(3.011));
+        pds.setValue("Perl", new Double(2.857));
 
         JFreeChart chart2 = ChartFactory.createPieChart3D("Top 10: TIOBE Programming Community Index\nfor January 2011 (www.tiobe.com)", pds, true, true, Locale.GERMANY);
-        	PiePlot3D plot = (PiePlot3D) chart2.getPlot();
-	        plot.setStartAngle(290);
-	        
+        PiePlot3D plot = (PiePlot3D) chart2.getPlot();
+        plot.setStartAngle(290);
+
         MTJFreeChart mtChart2 = new MTJFreeChart(800, 600, mtApplication, chart2);
         // enable redraw of the chart when it's scaled by the user
         mtChart2.setRedrawWhenScaled(true);
-		this.getCanvas().addChild(mtChart1);
-		this.getCanvas().addChild(mtChart2);
-		mtChart1.setPositionGlobal(new Vector3D(mtApplication.width/2f,mtApplication.height/2f));
-		mtChart2.setPositionGlobal(new Vector3D(150+mtApplication.width/2f,150+mtApplication.height/2f));
-	}
-	@Override
-	public void init() {}
-	@Override
-	public void shutDown() {}
+        this.getCanvas().addChild(mtChart1);
+        this.getCanvas().addChild(mtChart2);
+        mtChart1.setPositionGlobal(new Vector3D(mtApplication.width / 2f, mtApplication.height / 2f));
+        mtChart2.setPositionGlobal(new Vector3D(150 + mtApplication.width / 2f, 150 + mtApplication.height / 2f));
+    }
+
+    @Override
+    public void init()
+    {
+    }
+
+    @Override
+    public void shutDown()
+    {
+    }
 }

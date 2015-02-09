@@ -15,12 +15,16 @@ import org.mt4jx.input.gestureAction.dnd.DragAndDropTarget;
 
 import processing.core.PApplet;
 
-public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarget {
+public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarget
+{
 
-    /** The Constant logger. */
+    /**
+     * The Constant logger.
+     */
     private static final ILogger LOG = MTLoggerFactory.getLogger(MyDragAndDropTarget.class.getName());
 
-    static {
+    static
+    {
         LOG.setLevel(ILogger.DEBUG);
     }
 
@@ -28,7 +32,8 @@ public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarge
 
     private final MTTextArea text;
 
-    public MyDragAndDropTarget(PApplet pApplet, IFont font) {
+    public MyDragAndDropTarget(PApplet pApplet, IFont font)
+    {
         super(100, 100, 400, 200, pApplet);
 
         final IFont arial = FontManager.getInstance().createFont(pApplet, "arial.ttf",
@@ -46,9 +51,11 @@ public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarge
         setPickable(false);
     }
 
-    public void setText() {
+    public void setText()
+    {
         String text = getName() + "\n";
-        for (int i = 0; i < droppedComponents.size(); i++) {
+        for (int i = 0; i < droppedComponents.size(); i++)
+        {
             text += "- " + droppedComponents.get(i).getName() + "\n";
         }
         this.text.setText(text);
@@ -56,8 +63,10 @@ public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarge
     }
 
     @Override
-    public void componentDropped(MTComponent droppedComponent, DragEvent de) {
-        if (!droppedComponents.contains(droppedComponent)) {
+    public void componentDropped(MTComponent droppedComponent, DragEvent de)
+    {
+        if (!droppedComponents.contains(droppedComponent))
+        {
             droppedComponents.add(droppedComponent);
         }
 
@@ -67,14 +76,16 @@ public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarge
     }
 
     @Override
-    public void componentEntered(MTComponent droppedComponent) {
+    public void componentEntered(MTComponent droppedComponent)
+    {
         LOG.debug(getName() + ": " + droppedComponent.getName() + " entered.");
         setStrokeColor(new MTColor(255, 0, 0));
         setText();
     }
 
     @Override
-    public void componentExited(MTComponent droppedComponent) {
+    public void componentExited(MTComponent droppedComponent)
+    {
         droppedComponents.remove(droppedComponent);
         setStrokeColor(getFillColor());
         LOG.debug(getName() + ": " + droppedComponent.getName() + " exited.");
@@ -82,7 +93,8 @@ public class MyDragAndDropTarget extends MTRectangle implements DragAndDropTarge
     }
 
     @Override
-    public boolean dndAccept(MTComponent component) {
+    public boolean dndAccept(MTComponent component)
+    {
         return true;
     }
 }

@@ -17,16 +17,21 @@ import org.mt4j.util.logging.MTLoggerFactory;
 import org.mt4j.util.math.Vector3D;
 import org.mt4jx.input.gestureAction.dnd.DragAndDropAction;
 
-public class DnDScene extends AbstractScene {
+public class DnDScene extends AbstractScene
+{
 
-    /** The Constant logger. */
+    /**
+     * The Constant logger.
+     */
     private static final ILogger LOG = MTLoggerFactory.getLogger(DnDScene.class.getName());
 
-    static {
+    static
+    {
         LOG.setLevel(ILogger.WARN);
     }
 
-    public DnDScene(MTApplication mtApplication, String name) {
+    public DnDScene(MTApplication mtApplication, String name)
+    {
         super(mtApplication, name);
 
         // Disable frustum culling for this scene - optional
@@ -42,16 +47,19 @@ public class DnDScene extends AbstractScene {
 
         // ///FRAMELABEL
         final MTTextArea framerateLabel = new MTTextArea(getMTApplication(), font);
-        framerateLabel.setController(new IMTController() {
+        framerateLabel.setController(new IMTController()
+        {
             private int cnt = 0;
 
             private double sum = 0;
 
             @Override
-            public void update(long millis) {
+            public void update(long millis)
+            {
                 sum += (int) getMTApplication().frameRate;
                 cnt++;
-                if ((cnt % 10) == 0) {
+                if ((cnt % 10) == 0)
+                {
                     final int avrg = (int) Math.round(sum / cnt);
                     framerateLabel.setText("Frames: " + avrg);
                     cnt = 0;
@@ -87,9 +95,11 @@ public class DnDScene extends AbstractScene {
 
         // Create a Drag&Drop-Component
         final MTEllipse dark = new MTEllipse(mtApplication, new Vector3D(300, 100), 50, 50);
-        dark.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener() {
+        dark.addGestureListener(TapAndHoldProcessor.class, new IGestureEventListener()
+        {
             @Override
-            public boolean processGestureEvent(MTGestureEvent ge) {
+            public boolean processGestureEvent(MTGestureEvent ge)
+            {
                 LOG.debug(ge);
                 return false;
             }
@@ -107,10 +117,12 @@ public class DnDScene extends AbstractScene {
     }
 
     @Override
-    public void init() {
+    public void init()
+    {
     }
 
     @Override
-    public void shutDown() {
+    public void shutDown()
+    {
     }
 }

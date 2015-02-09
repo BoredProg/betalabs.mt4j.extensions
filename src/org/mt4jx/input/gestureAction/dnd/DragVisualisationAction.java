@@ -19,62 +19,73 @@ import processing.core.PApplet;
 
 /**
  * @author laufs
- * The DragVisualisationAction visualized dragging "undraggable" elements e.g. from a MTList
+ * The DragVisualisationAction visualized dragging "undraggable" elements e.g.
+ * from a MTList
  */
-public class DragVisualisationAction extends DefaultDragAction {
-	private MTComponent dndVisualisationLayer;
-	private MTRoundRectangle dragVis;
-	private PApplet pApplet;
-	
-	public DragVisualisationAction(MTComponent dndVisualisationLayer, PApplet pApplet){
-		this.dndVisualisationLayer = dndVisualisationLayer;
-		this.pApplet = pApplet;
-	}
-	@Override
-	public boolean processGestureEvent(final MTGestureEvent g) {
-		IMTComponent3D target;
-		if(g instanceof DragEvent){
-			DragEvent de = (DragEvent)g;
-			target = de.getCurrentTarget();
-			switch (g.getId()) {
-			case DragEvent.GESTURE_DETECTED:
-				if(target instanceof AbstractShape){
-					AbstractShape as = (AbstractShape)target;
-					float w = as.getWidthXY(TransformSpace.LOCAL);
-					float h = as.getHeightXY(TransformSpace.LOCAL);
-					this.dragVis = new MTRoundRectangle(0,0,0,w,h,10,10,pApplet);
-//					this.addChangeColorAnimation(dragVis);
-					dragVis.setFillColor(new MTColor(0,0,0,32));
-					dragVis.setStrokeColor(new MTColor(0,0,0,32));
-					dragVis.setPositionGlobal(as.getCenterPointGlobal());
-					dragVis.setPickable(false);
-					dragVis.removeAllGestureEventListeners();
-					this.dndVisualisationLayer.addChild(dragVis);
-				}
-				
-				break;
-			case DragEvent.GESTURE_UPDATED:
-				if(target instanceof AbstractShape){
-					AbstractShape as = (AbstractShape)target;
-					dragVis.setPositionGlobal(de.getDragCursor().getCurrentEvent().getPosition());
-				}
-				break;
-			case DragEvent.GESTURE_ENDED:
-				if(target instanceof AbstractShape){
-					AbstractShape as = (AbstractShape)target;
-					dragVis.setVisible(false);
-					this.dndVisualisationLayer.removeChild(dragVis);
-					dragVis.destroy();
-				}
-				break;
+public class DragVisualisationAction extends DefaultDragAction
+{
 
-			default:
-				break;
-			}
-		}
-		return false;
-	}
-	
+    private MTComponent dndVisualisationLayer;
+    private MTRoundRectangle dragVis;
+    private PApplet pApplet;
+
+    public DragVisualisationAction(MTComponent dndVisualisationLayer, PApplet pApplet)
+    {
+        this.dndVisualisationLayer = dndVisualisationLayer;
+        this.pApplet = pApplet;
+    }
+
+    @Override
+    public boolean processGestureEvent(final MTGestureEvent g)
+    {
+        IMTComponent3D target;
+        if (g instanceof DragEvent)
+        {
+            DragEvent de = (DragEvent) g;
+            target = de.getCurrentTarget();
+            switch (g.getId())
+            {
+                case DragEvent.GESTURE_DETECTED:
+                    if (target instanceof AbstractShape)
+                    {
+                        AbstractShape as = (AbstractShape) target;
+                        float w = as.getWidthXY(TransformSpace.LOCAL);
+                        float h = as.getHeightXY(TransformSpace.LOCAL);
+                        this.dragVis = new MTRoundRectangle(0, 0, 0, w, h, 10, 10, pApplet);
+//					this.addChangeColorAnimation(dragVis);
+                        dragVis.setFillColor(new MTColor(0, 0, 0, 32));
+                        dragVis.setStrokeColor(new MTColor(0, 0, 0, 32));
+                        dragVis.setPositionGlobal(as.getCenterPointGlobal());
+                        dragVis.setPickable(false);
+                        dragVis.removeAllGestureEventListeners();
+                        this.dndVisualisationLayer.addChild(dragVis);
+                    }
+
+                    break;
+                case DragEvent.GESTURE_UPDATED:
+                    if (target instanceof AbstractShape)
+                    {
+                        AbstractShape as = (AbstractShape) target;
+                        dragVis.setPositionGlobal(de.getDragCursor().getCurrentEvent().getPosition());
+                    }
+                    break;
+                case DragEvent.GESTURE_ENDED:
+                    if (target instanceof AbstractShape)
+                    {
+                        AbstractShape as = (AbstractShape) target;
+                        dragVis.setVisible(false);
+                        this.dndVisualisationLayer.removeChild(dragVis);
+                        dragVis.destroy();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        return false;
+    }
+
 //	public void addChangeColorAnimation(final AbstractShape as){
 //			IAnimation colorAnim = new AniAnimation(64, 168, 1000,-1, AniAnimation.LINEAR, as);
 //			colorAnim.addAnimationListener(new IAnimationListener(){

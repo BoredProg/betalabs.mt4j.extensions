@@ -1,20 +1,22 @@
-/***********************************************************************
- *   MT4j Extension: Toolbar
- *   
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU Lesser General Public License (LGPL)
- *   as published by the Free Software Foundation, either version 3
- *   of the License, or (at your option) any later version.
+/**
+ * *********************************************************************
+ * MT4j Extension: Toolbar
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU Lesser General Public License for more details.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License (LGPL)
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
  *
- *   You should have received a copy of the LGPL
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
  *
- ***********************************************************************/
+ * You should have received a copy of the LGPL
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ **********************************************************************
+ */
 package org.mt4jx.components.visibleComponents.widgets.toolbar;
 
 import java.awt.event.ActionEvent;
@@ -35,119 +37,130 @@ import processing.core.PImage;
  * @author Alexander Phleps
  *
  */
-public class MTToolbarButton extends MTRectangle implements IclickableButton {
-	private ArrayList<ActionListener> registeredActionListeners;
-	private MTLayoutContainer listMenu = null;
-	
-	
-	
-	public MTLayoutContainer getListMenu() {
-		return listMenu;
-	}
+public class MTToolbarButton extends MTRectangle implements IclickableButton
+{
 
-	public MTToolbarButton(PImage texture, PApplet applet) {
-		super(applet, texture);
-		
-		this.registeredActionListeners = new ArrayList<ActionListener>();
-		setNoStroke(true);
+    private ArrayList<ActionListener> registeredActionListeners;
+    private MTLayoutContainer listMenu = null;
 
-		//Make clickable
-		this.setGestureAllowance(TapProcessor.class, true);
-		this.registerInputProcessor(new TapProcessor(applet));
-		this.addGestureListener(TapProcessor.class, new MTToolbarButtonClickAction(this));
-	}
+    public MTLayoutContainer getListMenu()
+    {
+        return listMenu;
+    }
 
-	@Override
-	public boolean isSelected() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public MTToolbarButton(PImage texture, PApplet applet)
+    {
+        super(applet, texture);
 
-	@Override
-	public void setSelected(boolean selected) {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	protected IBoundingShape computeDefaultBounds(){
-		return new BoundsZPlaneRectangle(this);
-	}
-		
-	/**
-	 * Adds the action listener.
-	 * 
-	 * @param listener the listener
-	 */
-	public synchronized void addActionListener(ActionListener listener){
-		if (!registeredActionListeners.contains(listener)){
-			registeredActionListeners.add(listener);
-		}
-	}
-	
-	/**
-	 * Removes the action listener.
-	 * 
-	 * @param listener the listener
-	 */
-	public synchronized void removeActionListener(ActionListener listener){
-		if (registeredActionListeners.contains(listener)){
-			registeredActionListeners.remove(listener);
-		}
-	}
-	
-	/**
-	 * Gets the action listeners.
-	 * 
-	 * @return the action listeners
-	 */
-	public synchronized ActionListener[] getActionListeners(){
-		return (ActionListener[])registeredActionListeners.toArray(new ActionListener[this.registeredActionListeners.size()]);
-	}
-	
-	/**
-	 * Fire action performed.
-	 */
-	protected void fireActionPerformed() {
-		ActionListener[] listeners = this.getActionListeners();
-		synchronized(listeners) {
-			for (int i = 0; i < listeners.length; i++) {
-				ActionListener listener = (ActionListener)listeners[i];
-				listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "action performed on tangible button"));
-				
-			}
-		}
-	}
-	
-	/**
-	 * fires an action event with a ClickEvent Id as its ID.
-	 * 
-	 * @param ce the ce
-	 */
-	public void fireActionPerformed(TapEvent ce) {
-		ActionListener[] listeners = this.getActionListeners();
-		if(ce.isTapped()){
-			synchronized(listeners) {
-				for (int i = 0; i < listeners.length; i++) {
-					ActionListener listener = (ActionListener)listeners[i];
-					listener.actionPerformed(new ActionEvent(this, ce.getTapID(),  "action performed on tangible button"));
-				}
-			}
-		}
-	}
-	
-	
-	
-	
+        this.registeredActionListeners = new ArrayList<ActionListener>();
+        setNoStroke(true);
 
-	
-	
+        //Make clickable
+        this.setGestureAllowance(TapProcessor.class, true);
+        this.registerInputProcessor(new TapProcessor(applet));
+        this.addGestureListener(TapProcessor.class, new MTToolbarButtonClickAction(this));
+    }
+
+    @Override
+    public boolean isSelected()
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void setSelected(boolean selected)
+    {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    protected IBoundingShape computeDefaultBounds()
+    {
+        return new BoundsZPlaneRectangle(this);
+    }
+
+    /**
+     * Adds the action listener.
+     *
+     * @param listener the listener
+     */
+    public synchronized void addActionListener(ActionListener listener)
+    {
+        if (!registeredActionListeners.contains(listener))
+        {
+            registeredActionListeners.add(listener);
+        }
+    }
+
+    /**
+     * Removes the action listener.
+     *
+     * @param listener the listener
+     */
+    public synchronized void removeActionListener(ActionListener listener)
+    {
+        if (registeredActionListeners.contains(listener))
+        {
+            registeredActionListeners.remove(listener);
+        }
+    }
+
+    /**
+     * Gets the action listeners.
+     *
+     * @return the action listeners
+     */
+    public synchronized ActionListener[] getActionListeners()
+    {
+        return (ActionListener[]) registeredActionListeners.toArray(new ActionListener[this.registeredActionListeners.size()]);
+    }
+
+    /**
+     * Fire action performed.
+     */
+    protected void fireActionPerformed()
+    {
+        ActionListener[] listeners = this.getActionListeners();
+        synchronized (listeners)
+        {
+            for (int i = 0; i < listeners.length; i++)
+            {
+                ActionListener listener = (ActionListener) listeners[i];
+                listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "action performed on tangible button"));
+
+            }
+        }
+    }
+
+    /**
+     * fires an action event with a ClickEvent Id as its ID.
+     *
+     * @param ce the ce
+     */
+    public void fireActionPerformed(TapEvent ce)
+    {
+        ActionListener[] listeners = this.getActionListeners();
+        if (ce.isTapped())
+        {
+            synchronized (listeners)
+            {
+                for (int i = 0; i < listeners.length; i++)
+                {
+                    ActionListener listener = (ActionListener) listeners[i];
+                    listener.actionPerformed(new ActionEvent(this, ce.getTapID(), "action performed on tangible button"));
+                }
+            }
+        }
+    }
+
 	//processing level ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
-	
-	/**
-	 * Draws border, color and transparency on processing level.
-	 */
-	public void drawComponent(processing.core.PGraphics g) {
-		super.drawComponent(g);
+    /**
+     * Draws border, color and transparency on processing level.
+     */
+    public void drawComponent(processing.core.PGraphics g)
+    {
+        super.drawComponent(g);
 //		parent.fill(parent.GRAY, 100);
 //		parent.strokeWeight(borderSize);
 //		parent.stroke(255, 255, 255, 100);
@@ -155,41 +168,37 @@ public class MTToolbarButton extends MTRectangle implements IclickableButton {
 //		parent.rectMode(parent.CORNER);
 //		//parent.rect(-borderSize, -borderSize, buttonCount * size + borderSize * 2, size + borderSize * 2);
 //		parent.rect(0, 0, this.getWidthXY(TransformSpace.LOCAL), this.getHeightXY(TransformSpace.LOCAL));
-		
-		
 
-		
-		
-		
-	}
+    }
 
-	public void addSubmenu(final MTLayoutContainer listMenu) {
-		// TODO Auto-generated method stub
-		this.listMenu = listMenu;
-		listMenu.setVisible(false);
-		
-		
-		MTLayoutContainer parent = (MTLayoutContainer) this.getParent();
-		
-		listMenu.alignTo(this, parent.getAlign(), parent.getLayout());
-		this.addChild(listMenu);
-		
-		this.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				switch(event.getID()) {
-					case TapEvent.TAPPED:
+    public void addSubmenu(final MTLayoutContainer listMenu)
+    {
+        // TODO Auto-generated method stub
+        this.listMenu = listMenu;
+        listMenu.setVisible(false);
+
+        MTLayoutContainer parent = (MTLayoutContainer) this.getParent();
+
+        listMenu.alignTo(this, parent.getAlign(), parent.getLayout());
+        this.addChild(listMenu);
+
+        this.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent event)
+            {
+                switch (event.getID())
+                {
+                    case TapEvent.TAPPED:
 //						menu.align(MTToolbar.TOP); //just temporary
-						System.out.println("click on button with list");
-						
-						listMenu.toggle();
-					break;
-				}
-			}
-        });
-		
-		
-	}
+                        System.out.println("click on button with list");
 
-	
+                        listMenu.toggle();
+                        break;
+                }
+            }
+        });
+
+    }
+
 }

@@ -1,20 +1,22 @@
-/***********************************************************************
- *   MT4j Extension: MTCircularMenu
- *   
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU Lesser General Public License (LGPL)
- *   as published by the Free Software Foundation, either version 3
- *   of the License, or (at your option) any later version.
+/**
+ * *********************************************************************
+ * MT4j Extension: MTCircularMenu
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU Lesser General Public License for more details.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License (LGPL)
+ * as published by the Free Software Foundation, either version 3
+ * of the License, or (at your option) any later version.
  *
- *   You should have received a copy of the LGPL
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
  *
- ***********************************************************************/
+ * You should have received a copy of the LGPL
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ **********************************************************************
+ */
 package org.mt4jx.util.animation;
 
 import org.mt4j.components.MTComponent;
@@ -34,24 +36,30 @@ import processing.core.PApplet;
 
 /**
  * @author Uwe Laufs
- * 
+ *
  */
-public class AnimationUtil {
+public class AnimationUtil
+{
 
     private static final ILogger LOG = MTLoggerFactory.getLogger(AnimationUtil.class.getName());
 
-    static {
+    static
+    {
         LOG.setLevel(ILogger.DEBUG);
     }
 
-    public static void rotateOut(final MTPolygon as, final boolean destroyWhenCompleted) {
+    public static void rotateOut(final MTPolygon as, final boolean destroyWhenCompleted)
+    {
         final float width = as.getWidthXY(TransformSpace.RELATIVE_TO_PARENT);
         final IAnimation closeAnim = new AniAnimation(width, 1, 350, AniAnimation.SINE_IN, as);
-        closeAnim.addAnimationListener(new IAnimationListener() {
+        closeAnim.addAnimationListener(new IAnimationListener()
+        {
             @Override
-            public void processAnimationEvent(AnimationEvent ae) {
+            public void processAnimationEvent(AnimationEvent ae)
+            {
                 // float delta = ae.getAnimation().getInterpolator().getCurrentStepDelta();
-                switch (ae.getId()) {
+                switch (ae.getId())
+                {
                     case AnimationEvent.ANIMATION_STARTED:
                     case AnimationEvent.ANIMATION_UPDATED:
                         final float currentVal = ae.getValue();
@@ -60,7 +68,8 @@ public class AnimationUtil {
                         break;
                     case AnimationEvent.ANIMATION_ENDED:
                         as.setVisible(false);
-                        if (destroyWhenCompleted) {
+                        if (destroyWhenCompleted)
+                        {
                             as.destroy();
                         }
                         break;
@@ -72,13 +81,17 @@ public class AnimationUtil {
         closeAnim.start();
     }
 
-    public static void rotate2D(final MTPolygon as, float degrees) {
+    public static void rotate2D(final MTPolygon as, float degrees)
+    {
         final IAnimation closeAnim = new AniAnimation(0, -1 * degrees, 500, AniAnimation.SINE_IN, as);
-        closeAnim.addAnimationListener(new IAnimationListener() {
+        closeAnim.addAnimationListener(new IAnimationListener()
+        {
             @Override
-            public void processAnimationEvent(AnimationEvent ae) {
+            public void processAnimationEvent(AnimationEvent ae)
+            {
                 // float delta = ae.getAnimation().getInterpolator().getCurrentStepDelta();
-                switch (ae.getId()) {
+                switch (ae.getId())
+                {
                     case AnimationEvent.ANIMATION_STARTED:
                     case AnimationEvent.ANIMATION_UPDATED:
                         as.rotateZ(as.getCenterPointRelativeToParent(), -ae.getDelta());
@@ -93,14 +106,18 @@ public class AnimationUtil {
         closeAnim.start();
     }
 
-    public static void bounceOut(final MTPolygon as, final boolean destroyWhenCompleted) {
+    public static void bounceOut(final MTPolygon as, final boolean destroyWhenCompleted)
+    {
         final float width = as.getWidthXY(TransformSpace.RELATIVE_TO_PARENT);
         final IAnimation closeAnim = new AniAnimation(width, 1, 1000, AniAnimation.BOUNCE_OUT, as);
-        closeAnim.addAnimationListener(new IAnimationListener() {
+        closeAnim.addAnimationListener(new IAnimationListener()
+        {
             @Override
-            public void processAnimationEvent(AnimationEvent ae) {
+            public void processAnimationEvent(AnimationEvent ae)
+            {
                 // float delta = ae.getAnimation().getInterpolator().getCurrentStepDelta();
-                switch (ae.getId()) {
+                switch (ae.getId())
+                {
                     case AnimationEvent.ANIMATION_STARTED:
                     case AnimationEvent.ANIMATION_UPDATED:
                         final float currentVal = ae.getValue();
@@ -109,7 +126,8 @@ public class AnimationUtil {
                         break;
                     case AnimationEvent.ANIMATION_ENDED:
                         as.setVisible(false);
-                        if (destroyWhenCompleted) {
+                        if (destroyWhenCompleted)
+                        {
                             as.destroy();
                         }
                         break;
@@ -121,14 +139,18 @@ public class AnimationUtil {
         closeAnim.start();
     }
 
-    public static void scaleOut(final MTPolygon as, final boolean destroyWhenCompleted) {
+    public static void scaleOut(final MTPolygon as, final boolean destroyWhenCompleted)
+    {
         final float width = as.getWidthXY(TransformSpace.RELATIVE_TO_PARENT);
         final IAnimation closeAnim = new AniAnimation(width, 1, 300, AniAnimation.LINEAR, as);
-        closeAnim.addAnimationListener(new IAnimationListener() {
+        closeAnim.addAnimationListener(new IAnimationListener()
+        {
             @Override
-            public void processAnimationEvent(AnimationEvent ae) {
+            public void processAnimationEvent(AnimationEvent ae)
+            {
                 // float delta = ae.getAnimation().getInterpolator().getCurrentStepDelta();
-                switch (ae.getId()) {
+                switch (ae.getId())
+                {
                     case AnimationEvent.ANIMATION_STARTED:
                     case AnimationEvent.ANIMATION_UPDATED:
                         final float currentVal = ae.getValue();
@@ -136,7 +158,8 @@ public class AnimationUtil {
                         break;
                     case AnimationEvent.ANIMATION_ENDED:
                         as.setVisible(false);
-                        if (destroyWhenCompleted) {
+                        if (destroyWhenCompleted)
+                        {
                             as.destroy();
                         }
                         break;
@@ -148,14 +171,18 @@ public class AnimationUtil {
         closeAnim.start();
     }
 
-    public static void scaleIn(final MTPolygon as) {
+    public static void scaleIn(final MTPolygon as)
+    {
         final float width = as.getWidthXY(TransformSpace.RELATIVE_TO_PARENT);
         final IAnimation closeAnim = new AniAnimation(1, width, 300, AniAnimation.LINEAR, as);
-        closeAnim.addAnimationListener(new IAnimationListener() {
+        closeAnim.addAnimationListener(new IAnimationListener()
+        {
             @Override
-            public void processAnimationEvent(AnimationEvent ae) {
+            public void processAnimationEvent(AnimationEvent ae)
+            {
                 // float delta = ae.getAnimation().getInterpolator().getCurrentStepDelta();
-                switch (ae.getId()) {
+                switch (ae.getId())
+                {
                     case AnimationEvent.ANIMATION_STARTED:
                     case AnimationEvent.ANIMATION_UPDATED:
                         final float currentVal = ae.getValue();
@@ -172,14 +199,18 @@ public class AnimationUtil {
     }
 
     public static void translate(final MTComponent as, final float x,
-            final float y) {
+            final float y)
+    {
         {
             final IAnimation ani = new AniAnimation(0, 1, 400, AniAnimation.SINE_IN,
                     as);
-            ani.addAnimationListener(new IAnimationListener() {
+            ani.addAnimationListener(new IAnimationListener()
+            {
                 @Override
-                public void processAnimationEvent(AnimationEvent ae) {
-                    switch (ae.getId()) {
+                public void processAnimationEvent(AnimationEvent ae)
+                {
+                    switch (ae.getId())
+                    {
                         case AnimationEvent.ANIMATION_STARTED:
                         case AnimationEvent.ANIMATION_UPDATED:
                             final float delta = ae.getDelta();
@@ -196,7 +227,8 @@ public class AnimationUtil {
         }
     }
 
-    public static void moveIntoScreen(AbstractShape as, PApplet pa) {
+    public static void moveIntoScreen(AbstractShape as, PApplet pa)
+    {
         {
             final Vector3D posEvent = as.getCenterPointGlobal();
 
@@ -211,26 +243,31 @@ public class AnimationUtil {
 
             // System.out.println("deltaX:"+deltaX1);
             // System.out.println("deltaY2:"+deltaY2);
-
             float translateX = 0f;
             float translateY = 0f;
-            if (deltaX1 < 0) {
+            if (deltaX1 < 0)
+            {
                 translateX = -deltaX1 / 2f;
-            } else if (deltaX2 > 0) {
+            } else if (deltaX2 > 0)
+            {
                 translateX = -deltaX2 / 2f;
             }
-            if (deltaY1 < 0) {
+            if (deltaY1 < 0)
+            {
                 translateY = -deltaY1 / 2f;
-            } else if (deltaY2 > 0) {
+            } else if (deltaY2 > 0)
+            {
                 translateY = -deltaY2 / 2f;
             }
-            if ((translateX != 0) || (translateY != 0)) {
+            if ((translateX != 0) || (translateY != 0))
+            {
                 AnimationUtil.translate(as, translateX, translateY);
             }
         }
     }
 
-    public static Vector3D getTranslationVector(MTComponent as, MTComponent container) {
+    public static Vector3D getTranslationVector(MTComponent as, MTComponent container)
+    {
         // Parent Geometry
 
         // Vector3D[] boundingShapeParent = container.getBounds().getVectorsGlobal();
@@ -250,16 +287,20 @@ public class AnimationUtil {
         float deltaX = 0f;
         float deltaY = 0f;
 
-        if (xMin < xMinParent) {
+        if (xMin < xMinParent)
+        {
             deltaX = xMin - xMinParent;
         }
-        if (xMax > xMaxParent) {
+        if (xMax > xMaxParent)
+        {
             deltaX = xMax - xMaxParent;
         }
-        if (yMin < yMinParent) {
+        if (yMin < yMinParent)
+        {
             deltaY = yMin - yMinParent;
         }
-        if (yMax > yMaxParent) {
+        if (yMax > yMaxParent)
+        {
             deltaY = yMax - yMaxParent;
         }
 

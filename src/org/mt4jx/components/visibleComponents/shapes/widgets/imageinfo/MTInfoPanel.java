@@ -15,11 +15,13 @@ import org.mt4jx.components.visibleComponents.layout.MTColumnLayout2D;
 
 import processing.core.PApplet;
 
-public class MTInfoPanel extends MTRoundRectangle {
+public class MTInfoPanel extends MTRoundRectangle
+{
 
     private static final ILogger LOG = MTLoggerFactory.getLogger(MTInfoPanel.class.getName());
 
-    static {
+    static
+    {
         LOG.setLevel(ILogger.DEBUG);
     }
 
@@ -43,11 +45,13 @@ public class MTInfoPanel extends MTRoundRectangle {
 
     private final AbstractShape image;
 
-    public MTInfoPanel(PApplet pa, String labelText, AbstractShape image, String text, float maxWidth, float maxHeight) {
+    public MTInfoPanel(PApplet pa, String labelText, AbstractShape image, String text, float maxWidth, float maxHeight)
+    {
         this(pa, labelText, image, text, maxWidth, maxHeight, null, null);
     }
 
-    public MTInfoPanel(PApplet pa, String labelText, AbstractShape image, String text, float maxWidth, float maxHeight, IFont headlineFont, IFont textFont) {
+    public MTInfoPanel(PApplet pa, String labelText, AbstractShape image, String text, float maxWidth, float maxHeight, IFont headlineFont, IFont textFont)
+    {
         super(pa, 0, 0, 0, 400, 300, 12, 12);
         setFillColor(fillColor);
         setStrokeColor(strokeColor);
@@ -62,19 +66,22 @@ public class MTInfoPanel extends MTRoundRectangle {
         init();
     }
 
-    private void init() {
+    private void init()
+    {
         rows = new MTColumnLayout2D(pa);
         rows.setPickable(false);
         this.addChild(rows);
         rows.translate(new Vector3D(1, 1));
 
         // setting default font if missing
-        if (headlineFont == null) {
+        if (headlineFont == null)
+        {
             headlineFont = FontManager.getInstance().createFont(pa, "arial",
                     32, // Font size
                     textColor); // Font outline color
         }
-        if (textFont == null) {
+        if (textFont == null)
+        {
             textFont = FontManager.getInstance().createFont(pa, "arial",
                     16, // Font size
                     textColor); // Font outline color
@@ -83,7 +90,8 @@ public class MTInfoPanel extends MTRoundRectangle {
         ta_label.setNoFill(true);
         ta_label.setNoStroke(true);
         ta_label.setPickable(false);
-        if (labelText != null) {
+        if (labelText != null)
+        {
             ta_label.setText(labelText);
         }
         rows.addChild(ta_label);
@@ -98,7 +106,8 @@ public class MTInfoPanel extends MTRoundRectangle {
         rows.addChild(image);
 
         float textHeight = maxHeight - rows.getHeightXY(TransformSpace.GLOBAL);
-        if (textHeight < 90) {
+        if (textHeight < 90)
+        {
             textHeight = 90;
         }
 
@@ -112,7 +121,8 @@ public class MTInfoPanel extends MTRoundRectangle {
         ta_text.setNoFill(true);
         ta_text.setNoStroke(true);
         ta_text.setPickable(false);
-        if (text != null) {
+        if (text != null)
+        {
             ta_text.setText(text);
         }
         rows.addChild(ta_text);
@@ -121,13 +131,16 @@ public class MTInfoPanel extends MTRoundRectangle {
             final float w = getWidthXY(TransformSpace.LOCAL);
             final float h = getHeightXY(TransformSpace.LOCAL);
             // System.out.println("w/h" + w + "/" + h);
-            if ((w > maxWidth) || (h > maxHeight)) {
+            if ((w > maxWidth) || (h > maxHeight))
+            {
                 final float fw = maxWidth / w;
                 final float fh = maxHeight / h;
                 // System.out.println("fw/fh" + fw + "/" + fh);
-                if (fw < fh) {
+                if (fw < fh)
+                {
                     scale(fw, fw, fw, getCenterPointLocal());
-                } else {
+                } else
+                {
                     scale(fh, fh, fh, getCenterPointLocal());
                 }
             }

@@ -3,8 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Source/Java/Netbeans%20Projects%202014/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/jfreechart/MTJFreeChart.java</file>
-            <file>file:/C:/Source/Java/Netbeans%20Projects%202014/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/jfreechart/examples/MTJFreeChartExampleScene.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/examples/StartMTBrowserExample.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4j/sound/Mp3GestureAction.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/font/fontFactories/EnhancedTTFontFactory.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/font/EnhancedFontManager.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/toolbar/MTToolbarButtonClickAction.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/toolbar/MTToolbarListItem.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/font/fontFactories/IEnhancedFontFactory.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/toolbar/example/TestScene.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4j/sound/example/HelloWorldScene.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/font/fontFactories/EnhancedBitmapFontFactory.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/font/fontFactories/EnhancedSvgFontFactory.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/toolbar/example/StartTestScene.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4j/sound/example/StartHelloWorld.java</file>
+            <file>file:/C:/Users/Sebastien/Documents/NetBeans%20Projects/betalabs.MT4JExtensions/src/org/mt4jx/components/visibleComponents/widgets/toolbar/MTToolbarButton.java</file>
         </group>
     </open-files>
 </project-private>

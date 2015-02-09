@@ -58,7 +58,7 @@ public class MTToolbarButtonClickAction implements IGestureEventListener
                             if (comp instanceof MTToolbarButton)
                             {
                                 IclickableButton polyButton = (MTToolbarButton) g.getTarget();
-                                ((MTToolbarButton)polyButton).fireActionPerformed((TapEvent) g);
+                                ((MTToolbarButton) polyButton).fireActionPerformed((TapEvent) g);
                             }
 
 //						System.out.println("1");
@@ -67,7 +67,7 @@ public class MTToolbarButtonClickAction implements IGestureEventListener
 //						} catch(Exception e) {
 //							//e.printStackTrace();							
 //						}
-						//hide any menu when invoking action on any other button
+                            //hide any menu when invoking action on any other button
                             //TODO: geht nicht wenn ListItem wegen class cast exception, au�erdem nicht sch�n auf diese weise
                             try
                             {
@@ -87,19 +87,19 @@ public class MTToolbarButtonClickAction implements IGestureEventListener
                         // update events
                         if (((TapEvent) g).getTapID() == TapEvent.TAP_DOWN)
                         {
-                            
+
                             if (comp instanceof MTToolbarButton)
                             {
                                 IclickableButton polyButton = (MTToolbarButton) g
                                         .getTarget();
-                                ((MTToolbarButton)polyButton).fireActionPerformed((TapEvent) g);
-                            }                            
-                            
+                                ((MTToolbarButton) polyButton).fireActionPerformed((TapEvent) g);
+                            }
+
                             if (comp instanceof IclickableButton)
                             {
                                 IclickableButton polyButton = (MTToolbarButton) g
                                         .getTarget();
-                                ((MTToolbarButton)polyButton).fireActionPerformed((TapEvent) g);
+                                ((MTToolbarButton) polyButton).fireActionPerformed((TapEvent) g);
                             }
 //						System.out.println("2");
                         }
@@ -114,7 +114,7 @@ public class MTToolbarButtonClickAction implements IGestureEventListener
                             {
                                 IclickableButton polyButton = (IclickableButton) g
                                         .getTarget();
-                                ((MTToolbarButton)polyButton).fireActionPerformed((TapEvent) g);
+                                ((MTToolbarButton) polyButton).fireActionPerformed((TapEvent) g);
                             }
 //						System.out.println("3");				
                         }
